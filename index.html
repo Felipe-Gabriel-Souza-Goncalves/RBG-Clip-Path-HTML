@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGB</title>
+
+    <style>
+        *{
+            margin: 0;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #box{
+            border-radius: 20px;
+            width: 10px;
+            height: 10px;
+        }
+        #container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+            #inputs{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            #canvas{
+                background-color: rgb(244, 244, 245);
+            }
+                .botaoFormato{
+                    border: 0;
+                    border-radius: 5px;
+                    padding: 5px 8px;
+                    background-color: rgb(13, 13, 71);
+                    color: aliceblue;
+                    font-size: 1.5rem;
+                    transition: 0.2s;
+                }
+                    .botaoFormato:hover{
+                        background-color: rgb(71, 71, 136);
+                    }
+
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <canvas id="canvas" height="600" width="600"></canvas>
+        <br>
+        <br>
+        <div id="inputs">
+            <label for="red">R (<span id="valorRed">0</span>)</label>
+            <input type="range" value="0" min="0" max="255" class="inputCor" id="red">
+            <br><br>
+            <label for="green">G (<span id="valorGreen">0</span>)</label>
+            <input type="range" value="0" min="0" max="255" class="inputCor" id="green">
+            <br><br>
+            <label for="blue">B (<span id="valorBlue">0</span>)</label>
+            <input type="range" value="0" min="0" max="255" class="inputCor" id="blue">
+            <br><br>
+            <div>
+                <button class="botaoFormato" onclick="formato = 'circulo'; desenhar();">Circulo</button>
+                <button class="botaoFormato" onclick="formato = 'triangulo'; desenhar();">Triângulo</button>
+                <button class="botaoFormato" onclick="formato = 'quadrado'; desenhar();">Quadrado</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
