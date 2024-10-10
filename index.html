@@ -13,6 +13,7 @@
             width: 100%;
             height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
@@ -24,18 +25,33 @@
         }
         #container{
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
+            gap: 1rem;
         }
             #inputs{
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
             }
-            #canvas{
+            #fundoDesenho{
                 background-color: rgb(244, 244, 245);
+                width: 32vw;
+                height: 35vw;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
+                #desenho{
+                    width: 22vw;
+                    height: 22vw;
+                    background-color: rgb(0, 0, 0);
+                    clip-path: polygon(50% 0, 0 100%, 100% 100%);
+                    /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); */
+                }
+                #movimentoTriangulo, #movimentoQuadrado, #movimentoElipse{
+                    display: none;
+                }
                 .botaoFormato{
                     border: 0;
                     border-radius: 5px;
@@ -48,13 +64,49 @@
                     .botaoFormato:hover{
                         background-color: rgb(71, 71, 136);
                     }
-
+            @media (width < 900px) {
+                #container{
+                    flex-direction: column;
+                }
+            }
 
     </style>
 </head>
 <body>
     <div id="container">
-        <canvas id="canvas" height="600" width="600"></canvas>
+        <div id="movimentoElipse">
+            <label for="">Largura</label>
+            <input min="1" max="50" value="50" id="larguraElipse" type="range">
+            <br>
+            <label for="">Altura</label>
+            <input min="1" max="50" value="50" id="alturaElipse" type="range">
+            <br>
+        </div>
+        <!--  -->
+        <div id="movimentoTriangulo">
+            <label for="">Vertice 1</label>
+            <input min="0" max="100" value="50" id="trianguloVertice1" type="range">
+            <br>
+            <label for="">Vertice 2</label>
+            <input  min="0" max="100" value="0" id="trianguloVertice2" type="range">
+            <br>
+            <label for="">Vertice 3</label>
+            <input min="0" max="100" value="100" id="trianguloVertice3" type="range">
+        </div>
+        <!--  -->
+        <div id="movimentoQuadrado">
+            <label for="">Vertice 1</label>
+            <input class="inputVerticesQuadrado" type="range" min="0" max="100" id="verticeX1" value="0"><br>
+            <label for="">Vertice 2</label>
+            <input class="inputVerticesQuadrado" type="range" min="0" max="100" id="verticeX2" value="100"><br>
+            <label for="">Vertice 3</label>
+            <input class="inputVerticesQuadrado" type="range" min="0" max="100" id="verticeX3" value="100"><br>
+            <label for="">Vertice 4</label>
+            <input class="inputVerticesQuadrado" type="range" min="0" max="100" id="verticeX4" value="0"><br>
+        </div>
+        <div id="fundoDesenho">
+            <div id="desenho"></div>
+        </div>
         <br>
         <br>
         <div id="inputs">
@@ -68,13 +120,18 @@
             <input type="range" value="0" min="0" max="255" class="inputCor" id="blue">
             <br><br>
             <div>
-                <button class="botaoFormato" onclick="formato = 'circulo'; desenhar();">Circulo</button>
-                <button class="botaoFormato" onclick="formato = 'triangulo'; desenhar();">Triângulo</button>
-                <button class="botaoFormato" onclick="formato = 'quadrado'; desenhar();">Quadrado</button>
+                <button class="botaoFormato" onclick="formato('circulo')">Circulo</button>
+                <button class="botaoFormato" onclick="formato('triangulo')">Triângulo</button>
+                <button class="botaoFormato" onclick="formato('quadrado')" >Quadrado</button>
             </div>
+            <br>
+            <button class="botaoFormato" onclick="copiarCor()">Copiar cor</button>
+            <br>
+            <button class="botaoFormato" onclick="reiniciarCores()">Reiniciar cores</button>
         </div>
     </div>
 
-    <script src="script.js"></script>
+
+    <script src="scriptV_2.js"></script>
 </body>
 </html>
