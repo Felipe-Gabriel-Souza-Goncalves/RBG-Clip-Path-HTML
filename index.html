@@ -15,53 +15,61 @@
             <label for="">Altura</label>
             <input min="1" max="50" value="50" id="alturaElipse" type="range">
             <br>
-            <label for="">Rotação</label>
-            <input min="1" max="360" value="0" id="rotacaoElipse" type="range">
+            <label for="">Rotação <span id="spanRotacaoElipse">0</span>°</label><br>
+            <input min="0" max="360" value="0" id="rotacaoElipse" type="range" list="grausRotacao">
             <br>
         </div>
         <!--  -->
         <div id="movimentoTriangulo">
             <!-- Eixo y -->
             <label for="">Vertice Y 1</label>
-            <input min="0" max="100" value="0"  id="trianguloVerticeY1" type="range">
+            <input class="trianguloVerticeY" min="0" max="100" value="0"  type="range">
             <br>
             <label for="">Vertice Y 2</label>
-            <input min="0" max="100" value="100"  id="trianguloVerticeY2" type="range">
+            <input class="trianguloVerticeY" min="0" max="100" value="100"  type="range">
             <br>
             <label for="">Vertice Y 3</label>
-            <input min="0" max="100" value="100"  id="trianguloVerticeY3" type="range">
+            <input class="trianguloVerticeY" min="0" max="100" value="100"  type="range">
             <br><br><br>
             <!-- Eixo x -->
             <label for="">Vertice 1</label>
-            <input min="0" max="100" value="50" id="trianguloVertice1" type="range">
+            <input class="trianguloVerticeX" min="0" max="100" value="50" type="range">
             <br>
             <label for="">Vertice 2</label>
-            <input  min="0" max="100" value="0" id="trianguloVertice2" type="range">
+            <input class="trianguloVerticeX" min="0" max="100" value="0" type="range">
             <br>
             <label for="">Vertice 3</label>
-            <input min="0" max="100" value="100" id="trianguloVertice3" type="range">
+            <input class="trianguloVerticeX" min="0" max="100" value="100" type="range">
+            <br><br><br>
+            <label for="">Rotação <span id="spanRotacaoTriangulo">0</span>°</label><br>
+            <input min="0" max="360" value="0" id="rotacaoTriangulo" type="range" list="grausRotacao">
+            <br>
         </div>
         <!--  -->
         <div id="movimentoQuadrado">
             <!-- Eixo Y -->
             <label for="">Vertice Y 1</label>
-            <input class="inputVerticesQuadrado" type="range" min="1" max="100" id="verticeY1" value="1"><br>
+            <input class="quadradoVerticeY" type="range" min="1" max="100" value="1"><br>
             <label for="">Vertice Y 2</label>
-            <input class="inputVerticesQuadrado" type="range" min="1" max="100" id="verticeY2" value="1"><br>
+            <input class="quadradoVerticeY" type="range" min="1" max="100"  value="1"><br>
             <label for="">Vertice Y 3</label>
-            <input class="inputVerticesQuadrado" type="range" min="1" max="100" id="verticeY3" value="100"><br>
+            <input class="quadradoVerticeY" type="range" min="1" max="100"  value="100"><br>
             <label for="">Vertice Y 4</label>
-            <input class="inputVerticesQuadrado" type="range" min="1" max="100" id="verticeY4" value="100">
+            <input class="quadradoVerticeY" type="range" min="1" max="100"  value="100">
             <br><br><br>
             <!-- Eixo X -->
-            <label for="">Vertice 1</label>
-            <input class="inputVerticesQuadrado" type="range" min="0" max="100" id="verticeX1" value="0"><br>
-            <label for="">Vertice 2</label>
-            <input class="inputVerticesQuadrado" type="range" min="0" max="100" id="verticeX2" value="100"><br>
-            <label for="">Vertice 3</label>
-            <input class="inputVerticesQuadrado" type="range" min="0" max="100" id="verticeX3" value="100"><br>
-            <label for="">Vertice 4</label>
-            <input class="inputVerticesQuadrado" type="range" min="0" max="100" id="verticeX4" value="0"><br>
+            <label for="">Vertice X 1</label>
+            <input class="quadradoVerticeX" type="range" min="0" max="100"  value="0"><br>
+            <label for="">Vertice X 2</label>
+            <input class="quadradoVerticeX" type="range" min="0" max="100"  value="100"><br>
+            <label for="">Vertice X 3</label>
+            <input class="quadradoVerticeX" type="range" min="0" max="100"  value="100"><br>
+            <label for="">Vertice X 4</label>
+            <input class="quadradoVerticeX" type="range" min="0" max="100"  value="0"><br>
+            <br><br><br>
+            <label for="">Rotação <span id="spanRotacaoQuadrado">0</span>°</label><br>
+            <input min="0" max="360" value="0" id="rotacaoQuadrado" type="range" list="grausRotacao">
+            <br>
         </div>
         <div id="fundoDesenho">
             <div id="desenho"></div>
@@ -89,7 +97,11 @@
             <button class="botaoFormato" onclick="reiniciarCores()">Reiniciar cores</button>
         </div>
     </div>
-
+    <datalist id="grausRotacao">
+        <option value="90"></option>
+        <option value="180"></option>
+        <option value="270"></option>
+    </datalist>
 
     <script src="scriptV_2.js"></script>
 </body>

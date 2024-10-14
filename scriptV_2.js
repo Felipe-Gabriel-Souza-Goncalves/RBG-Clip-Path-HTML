@@ -3,7 +3,6 @@ const red = document.getElementById("red");
 const green = document.getElementById("green");
 const blue = document.getElementById("blue")
 
-
 red.addEventListener("input", mudarCor)
 green.addEventListener("input", mudarCor)
 blue.addEventListener("input", mudarCor)
@@ -14,72 +13,68 @@ const valorBlue = document.getElementById("valorBlue")
 //------------------------------------------------
 const desenho = document.getElementById("desenho")
 //------------------------------------------------
-const divVerticeTriangulo = document.getElementById("movimentoTriangulo")
-const trianguloVertice2 = document.getElementById("trianguloVertice2")
-const trianguloVertice3 = document.getElementById("trianguloVertice3")
-const trianguloVertice1 = document.getElementById("trianguloVertice1")
+const divInputTriangulo = document.getElementById("movimentoTriangulo")
+const trianguloVerticeX = document.getElementsByClassName("trianguloVerticeX")
+const trianguloVerticeY = document.getElementsByClassName("trianguloVerticeY")
+const spanRotacaoTriangulo = document.getElementById("spanRotacaoTriangulo")
+const inputRotacaoTriangulo = document.getElementById("rotacaoTriangulo")
 
-const trianguloVerticeY2 = document.getElementById("trianguloVerticeY2")
-const trianguloVerticeY3 = document.getElementById("trianguloVerticeY3")
-const trianguloVerticeY1 = document.getElementById("trianguloVerticeY1")
-
-divVerticeTriangulo.addEventListener("input", () =>{
-    mudarTriangulo(trianguloVertice1.value, trianguloVertice2.value, trianguloVertice3.value,
-                   trianguloVerticeY1.value, trianguloVerticeY2.value, trianguloVerticeY3.value)
+divInputTriangulo.addEventListener("input", () =>{
+    mudarTriangulo(trianguloVerticeX[0].value, trianguloVerticeX[1].value, trianguloVerticeX[2].value,
+                   trianguloVerticeY[0].value, trianguloVerticeY[1].value, trianguloVerticeY[2].value,
+                   inputRotacaoTriangulo.value)
 })
 // -----------------------------------------------
-const divVerticeQuadrado = document.getElementById("movimentoQuadrado")
-const verticeQuadradoX1 = document.getElementById("verticeX1")
-const verticeQuadradoX2 = document.getElementById("verticeX2")
-const verticeQuadradoX3 = document.getElementById("verticeX3")
-const verticeQuadradoX4 = document.getElementById("verticeX4")
+const divInputQuadrado = document.getElementById("movimentoQuadrado")
 
-const verticeQuadradoY1 = document.getElementById("verticeY1")
-const verticeQuadradoY2 = document.getElementById("verticeY2")
-const verticeQuadradoY3 = document.getElementById("verticeY3")
-const verticeQuadradoY4 = document.getElementById("verticeY4")
+const quadradoVerticeX = document.getElementsByClassName("quadradoVerticeX")
+const quadradoVerticeY = document.getElementsByClassName("quadradoVerticeY")
+const spanRotacaoQuadrado = document.getElementById("spanRotacaoQuadrado")
+const inputRotacaoQuadrado = document.getElementById("rotacaoQuadrado")
 
-divVerticeQuadrado.addEventListener("input", () =>{
-    mudarQuadrado(verticeQuadradoX1.value, verticeQuadradoX2.value, verticeQuadradoX3.value, verticeQuadradoX4.value,
-                  verticeQuadradoY1.value, verticeQuadradoY2.value, verticeQuadradoY3.value, verticeQuadradoY4.value
+divInputQuadrado.addEventListener("input", () =>{
+    mudarQuadrado(quadradoVerticeX[0].value, quadradoVerticeX[1].value, quadradoVerticeX[2].value, quadradoVerticeX[3].value,
+                  quadradoVerticeY[0].value, quadradoVerticeY[1].value, quadradoVerticeY[2].value, quadradoVerticeY[3].value,
+                  inputRotacaoQuadrado.value
     )
 })
 // -------------------------------------------------
-const divElipse = document.getElementById("movimentoElipse")
+const divInputElipse = document.getElementById("movimentoElipse")
 const larguraElipse = document.getElementById("larguraElipse")
 const alturaElipse = document.getElementById("alturaElipse")
-const rotacaoElipse = document.getElementById("rotacaoElipse")
+const inputRotacaoElipse = document.getElementById("rotacaoElipse")
+const spanRotacaoElipse = document.getElementById("spanRotacaoElipse")
 
-divElipse.addEventListener("input", ()=>{
-    mudarElipse(larguraElipse.value, alturaElipse.value, rotacaoElipse.value)
+
+divInputElipse.addEventListener("input", ()=>{
+    mudarElipse(larguraElipse.value, alturaElipse.value, inputRotacaoElipse.value)
 })
 
-
 function formato(formato){
+    desenho.style.rotate = "0deg"
+    divInputTriangulo.style.display = "none"
+    divInputQuadrado.style.display = "none"
+    divInputElipse.style.display = "none"
+
     switch(formato){
         case "quadrado":
             desenho.style.clipPath = "polygon(0 0, 0 100%, 100% 100%, 100% 0 )"
-            desenho.style.rotate = "0deg"
-            divVerticeTriangulo.style.display = "none"
-            divVerticeQuadrado.style.display = "block"
-            divElipse.style.display = "none"
-            
+            divInputQuadrado.style.display = "block"
+            spanRotacaoQuadrado.innerHTML = "0"
+            inputRotacaoQuadrado.value = "0"
             break;
         case "triangulo":
             desenho.style.clipPath = "polygon(50% 0, 0 100%, 100% 100%)"
-            desenho.style.rotate = "0deg"
-            divVerticeTriangulo.style.display = "block"
-            divVerticeQuadrado.style.display = "none"
-            divElipse.style.display = "none"
+            divInputTriangulo.style.display = "block"
+            spanRotacaoTriangulo.innerHTML = "0"
+            inputRotacaoTriangulo.value = "0"
             break;
         case "circulo":
             desenho.style.clipPath = "ellipse(50% 50%)"
-            desenho.style.rotate = "0deg"
-            divVerticeTriangulo.style.display = "none"
-            divVerticeQuadrado.style.display = "none"
-            divElipse.style.display = "block"
+            divInputElipse.style.display = "block"
+            spanRotacaoElipse.innerHTML = "0"
+            inputRotacaoElipse.value = "0"
             break;
-
     }
     return formato
 }
@@ -92,16 +87,20 @@ function mudarCor(){
     desenho.style.backgroundColor = `rgb(${red.value}, ${green.value}, ${blue.value})`
 }
 
-function mudarQuadrado(x1,x2,x3,x4,y1,y2,y3,y4){
-    console.log(`polygon(${x1}% ${y1}%, ${x2}% ${y2}%, ${x3}% ${y3}%, ${x4}% ${y4}%)`)
+function mudarQuadrado(x1,x2,x3,x4,y1,y2,y3,y4, rotacao){
     desenho.style.clipPath = `polygon(${x1}% ${y1}%, ${x2}% ${y2}%, ${x3}% ${y3}%, ${x4}% ${y4}%)`
+    desenho.style.rotate = `${rotacao}deg` 
+    spanRotacaoQuadrado.innerHTML = rotacao
 }
-function mudarTriangulo(x1,x2,x3, y1, y2, y3){
+function mudarTriangulo(x1,x2,x3, y1, y2, y3, rotacao){
     desenho.style.clipPath = `polygon(${x1}% ${y1}%, ${x2}% ${y2}%, ${x3}% ${y3}%`
+    desenho.style.rotate = `${rotacao}deg` 
+    spanRotacaoTriangulo.innerHTML = rotacao
 }
 function mudarElipse(largura, altura, rotacao){
     desenho.style.clipPath = `ellipse(${largura}% ${altura}%)`
     desenho.style.rotate = `${rotacao}deg` 
+    spanRotacaoElipse.innerHTML = rotacao
 }
 
 function reiniciarCores(){

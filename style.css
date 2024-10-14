@@ -21,6 +21,7 @@ body{
     justify-content: center;
     gap: 1rem;
 }
+
     #inputs{
         display: flex;
         flex-direction: column;
@@ -55,6 +56,12 @@ body{
             .botaoFormato:hover{
                 background-color: rgb(71, 71, 136);
             }
+
+    #rotacaoElipse,
+    #rotacaoQuadrado,
+    #rotacaoTriangulo{
+        width: 100%;
+    }
     @media (width < 900px) {
         #container{
             flex-direction: column;
