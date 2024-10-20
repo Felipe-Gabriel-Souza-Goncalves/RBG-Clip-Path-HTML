@@ -3,16 +3,18 @@ const red = document.getElementById("red");
 const green = document.getElementById("green");
 const blue = document.getElementById("blue")
 
-red.addEventListener("input", mudarCor)
-green.addEventListener("input", mudarCor)
-blue.addEventListener("input", mudarCor)
+red.addEventListener("input", corTypeRange)
+green.addEventListener("input", corTypeRange)
+blue.addEventListener("input", corTypeRange)
 
+// constantes dos elementos dos Span 
 const valorRed = document.getElementById("valorRed")
 const valorGreen = document.getElementById("valorGreen")
 const valorBlue = document.getElementById("valorBlue")
 //------------------------------------------------
 const desenho = document.getElementById("desenho")
 //------------------------------------------------
+// Todas as constantes referentes ao triangulo
 const divInputTriangulo = document.getElementById("movimentoTriangulo")
 const trianguloVerticeX = document.getElementsByClassName("trianguloVerticeX")
 const trianguloVerticeY = document.getElementsByClassName("trianguloVerticeY")
@@ -25,8 +27,8 @@ divInputTriangulo.addEventListener("input", () =>{
                    inputRotacaoTriangulo.value)
 })
 // -----------------------------------------------
+// Todas as constantes referentes ao quadrado
 const divInputQuadrado = document.getElementById("movimentoQuadrado")
-
 const quadradoVerticeX = document.getElementsByClassName("quadradoVerticeX")
 const quadradoVerticeY = document.getElementsByClassName("quadradoVerticeY")
 const spanRotacaoQuadrado = document.getElementById("spanRotacaoQuadrado")
@@ -39,6 +41,7 @@ divInputQuadrado.addEventListener("input", () =>{
     )
 })
 // -------------------------------------------------
+// Todas as constantes referentes ao circulo/elipse
 const divInputElipse = document.getElementById("movimentoElipse")
 const larguraElipse = document.getElementById("larguraElipse")
 const alturaElipse = document.getElementById("alturaElipse")
@@ -50,7 +53,9 @@ divInputElipse.addEventListener("input", ()=>{
     mudarElipse(larguraElipse.value, alturaElipse.value, inputRotacaoElipse.value)
 })
 
+// escolher o formato desejado
 function formato(formato){
+    // configurações antes dos formatos
     desenho.style.rotate = "0deg"
     divInputTriangulo.style.display = "none"
     divInputQuadrado.style.display = "none"
@@ -76,16 +81,22 @@ function formato(formato){
             inputRotacaoElipse.value = "0"
             break;
     }
-    return formato
 }
 
-function mudarCor(){
-    valorRed.innerHTML = red.value
-    valorGreen.innerHTML = green.value
-    valorBlue.innerHTML = blue.value
 
+function corTypeRange(){
+    if(rgbHex == "rgb"){
+        valorRed.innerHTML = red.value
+        valorGreen.innerHTML = green.value
+        valorBlue.innerHTML = blue.value
+    } else if(rgbHex == "hex"){
+        valorRed.innerHTML = componentToHex(parseInt(red.value))
+        valorGreen.innerHTML = componentToHex(parseInt(green.value))
+        valorBlue.innerHTML = componentToHex(parseInt(blue.value))
+    }
     desenho.style.backgroundColor = `rgb(${red.value}, ${green.value}, ${blue.value})`
 }
+
 
 function mudarQuadrado(x1,x2,x3,x4,y1,y2,y3,y4, rotacao){
     desenho.style.clipPath = `polygon(${x1}% ${y1}%, ${x2}% ${y2}%, ${x3}% ${y3}%, ${x4}% ${y4}%)`
@@ -107,12 +118,22 @@ function reiniciarCores(){
     red.value = 0
     green.value = 0
     blue.value = 0
-    mudarCor()
+    valorRed.innerHTML = 0
+    valorGreen.innerHTML = 0
+    valorBlue.innerHTML  = 0
+    inputTypeColor.value = 0
+    corTypeRange()
 }
 
 function copiarCor(){
-    var corCopiada = `rgb(${red.value}, ${green.value}, ${blue.value})`
-    navigator.clipboard.writeText(corCopiada)
-    alert("Cor copiada para área de tranferência")
+    var corCopiada;
+    if(rgbHex == "rgb"){
+        corCopiada = `rgb(${red.value}, ${green.value}, ${blue.value})`
+        navigator.clipboard.writeText(corCopiada)
+    } else if(rgbHex == "hex"){
+        corCopiada = "#" + valorRed.innerHTML + valorGreen.innerHTML + valorBlue.innerHTML
+        navigator.clipboard.writeText(corCopiada)
+    }
+    alert("Cor copiada para área de tranferência como " + rgbHex)
 }
 

@@ -2,13 +2,13 @@
     margin: 0;
 }
 body{
-    max-width: 100vw;
-    min-height: 100vh;
+    width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
+}  
 
 #box{
     border-radius: 20px;
@@ -44,7 +44,6 @@ body{
         #movimentoTriangulo, #movimentoQuadrado, #movimentoElipse{
             display: none;
         }
-
         .botaoFormato{
             border: 0;
             border-radius: 5px;
@@ -62,18 +61,17 @@ body{
     #rotacaoQuadrado,
     #rotacaoTriangulo{
         width: 100%;
-        overflow: auto;
     }
-    @media (width < 900px) {
 
-        body{
-            margin: 1rem;
-        }
+    #inputTypeColor{
+        display: none;
+        width: 100%;
+        padding: 15px;
+        height: 250px;
+    }   
+
+    @media (width < 900px) {
         #container{
             flex-direction: column;
-        }
-        .botaoFormato{
-            width: 100%;
-            margin-bottom: 0.5rem;
         }
     }
