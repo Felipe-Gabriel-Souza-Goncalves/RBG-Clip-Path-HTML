@@ -73,5 +73,6 @@ body{
     @media (width < 900px) {
         #container{
             flex-direction: column;
+            margin-top: 35%;
         }
     }
