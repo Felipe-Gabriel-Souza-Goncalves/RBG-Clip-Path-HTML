@@ -27,6 +27,10 @@ body{
         flex-direction: column;
         justify-content: center;
     }
+    .inputCor{
+        margin-top: 6px;
+        margin-bottom: 14px;
+    }
     #fundoDesenho{
         background-color: rgb(244, 244, 245);
         width: 32vw;
