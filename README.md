@@ -5,7 +5,7 @@ https://felipe-gabriel-souza-goncalves.github.io/RBG-Clip-Path-HTML/
 
 ## Descrição:
 - Site para testar a personalização de figuras alterando seu formato e cor
-- 
+  
 ## Funcionalidades:
 - ```<input type="range">``` e ```<input type="color">``` para alterar cor
 - ```<input type="range">``` para alterar formato e rotação
