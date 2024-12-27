@@ -78,7 +78,7 @@
         <div id="inputs">
 
             <!-- select -->
-            <select class="botaoFormato"  name="" id="selectModo">
+            <select class="botaoFormato" id="selectModo" onchange="escolherModo()">
                 <option value="rgb">RGB</option>
                 <option value="hex">Hexadecimal</option>
                 <option value="typeColor">Input tipo color</option>
@@ -101,8 +101,17 @@
                 <button class="botaoFormato" onclick="formato('quadrado')" >Quadrado</button>
             </div>
             <br>
-            <button class="botaoFormato" onclick="copiarCor()">Copiar cor</button>
+            <button popovertarget="opcoesExtras" class="botaoFormato">Opções extras</button>
             <br>
+            <div popover id="opcoesExtras">
+                <button class="botaoExtra" onclick="copiarCor()">Copiar cor</button>
+                <br>
+                <button class="botaoExtra" onclick="copiarClipPath()">Copiar clip-path</button>
+                <div class="tamanhoFigura">
+                    <label for="tamanho">Tamanho da figura:</label><br>
+                    <input type="range" min="1" max="100" value="65" id="tamanho"  oninput="mudarTamanho()">
+                </div>
+            </div>
             <button class="botaoFormato" onclick="reiniciarCores()">Reiniciar cores</button>
         </div>
     </div>

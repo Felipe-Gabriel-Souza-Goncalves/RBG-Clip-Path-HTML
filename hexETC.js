@@ -18,7 +18,6 @@ function escolherModo(){
         case "typeColor":
             usarInputTypeColor()
             corInputTypeColor()
-
             break
     }
 
@@ -51,6 +50,7 @@ function usarHex(){
 
 // função caso escolherModo seja input tipo cor
 function usarInputTypeColor(){
+    rgbHex = "typeColor"
     red.style.display = "none"
     green.style.display = "none"
     blue.style.display = "none"
@@ -67,4 +67,3 @@ function corInputTypeColor(){
 
 // listener do 'inputTypeColor' e 'selectModo'
 inputTypeColor.addEventListener("input",corInputTypeColor)
-selectModo.addEventListener("change", escolherModo)

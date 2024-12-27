@@ -83,7 +83,6 @@ function formato(formato){
     }
 }
 
-
 function corTypeRange(){
     if(rgbHex == "rgb"){
         valorRed.innerHTML = red.value
@@ -94,6 +93,7 @@ function corTypeRange(){
         valorGreen.innerHTML = componentToHex(parseInt(green.value))
         valorBlue.innerHTML = componentToHex(parseInt(blue.value))
     }
+    
     desenho.style.backgroundColor = `rgb(${red.value}, ${green.value}, ${blue.value})`
 }
 
@@ -133,7 +133,21 @@ function copiarCor(){
     } else if(rgbHex == "hex"){
         corCopiada = "#" + valorRed.innerHTML + valorGreen.innerHTML + valorBlue.innerHTML
         navigator.clipboard.writeText(corCopiada)
+    } else{
+        corCopiada = `${window.getComputedStyle(desenho).getPropertyValue("background-color")}`
+        navigator.clipboard.writeText(corCopiada)
     }
     alert("Cor copiada para área de tranferência como " + rgbHex)
 }
 
+function copiarClipPath(){
+    var elemento = `${window.getComputedStyle(desenho).getPropertyValue("clip-path")}`
+    navigator.clipboard.writeText(elemento)
+    alert("Clip-path copiado para área de transfêrencia")
+}
+
+function mudarTamanho(){
+    tamanho = document.getElementById("tamanho").value
+    desenho.style.width = `${tamanho}%`
+    desenho.style.height = `${tamanho}%`
+}

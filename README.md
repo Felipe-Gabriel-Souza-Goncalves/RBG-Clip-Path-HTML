@@ -1,10 +1,10 @@
 # 🎨 RBG-Clip-Path-HTML
-&nbsp; 
+
 ## 🌐 Link:
 https://felipe-gabriel-souza-goncalves.github.io/RBG-Clip-Path-HTML/
 
 ## ✏️ Descrição:
-### Site para testar a personalização de formas básicas alterando seu formato e cor
+**Site para testar a personalização de formas básicas alterando seu formato e cor**
   
 ## ⚙️ Funcionalidades:
 - ```<input type="range">``` e ```<input type="color">``` para alterar cor

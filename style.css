@@ -1,5 +1,6 @@
 *{
     margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 body{
     width: 100%;
@@ -33,7 +34,7 @@ body{
     }
     #fundoDesenho{
         background-color: rgb(244, 244, 245);
-        width: 32vw;
+        width: 35vw;
         height: 35vw;
         display: flex;
         justify-content: center;
@@ -48,7 +49,7 @@ body{
         #movimentoTriangulo, #movimentoQuadrado, #movimentoElipse{
             display: none;
         }
-        .botaoFormato{
+        .botaoFormato,.botaoExtra{
             border: 0;
             border-radius: 5px;
             padding: 5px 8px;
@@ -57,7 +58,7 @@ body{
             font-size: 1.5rem;
             transition: 0.2s;
         }
-            .botaoFormato:hover{
+            .botaoFormato:hover, .botaoExtra:hover{
                 background-color: rgb(71, 71, 136);
             }
 
@@ -73,6 +74,31 @@ body{
         padding: 15px;
         height: 250px;
     }   
+
+#opcoesExtras{
+    margin: 0;
+    padding: 0;
+    border: 2px transparent;
+    width: 300px;
+    background-color: rgb(13, 13, 71);
+    color: aliceblue;
+}
+    .botaoExtra{
+        border-radius: 0;
+        width: 100%;
+        border-bottom: 2px solid rgba(131, 131, 131, 0.808);
+        font-size: 2em;
+        padding: 10px 5px;
+        color: aliceblue;
+    }
+    .tamanhoFigura{
+        padding: 10px;
+        font-size: 1.5em;
+    }
+    #tamanho{
+        width: 100%;
+    }
+    
 
     @media (width < 900px) {
         #container{
